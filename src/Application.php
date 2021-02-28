@@ -65,7 +65,7 @@ class Application
             //route parser // using DI Dependencies Injection
             $class = $this->container->get('Marsapi\Controllers\Photos');
             $result = $class->showPhotos();
-            echo "\n*** Application runCLI() 68: result = *" . $result . "* <br/>\n";
+            echo "\n*** Application runCLI() 68: result = *" . $result . "* \n";
             var_dump($result);
         } catch (\Exception $e) {
             echo "\n* Error with DI * ";
@@ -81,7 +81,7 @@ class Application
         //Boot Router
         $routes = require __DIR__ . '/routes.php';
         $response = $this->bootRouter($routes);
-        echo "\n*** Application runHTTP() 84: response = *" . $response . "* <br/>\n";
+        echo "\n*** Application runHTTP() 84: response = *" . $response . "* \n";
         var_dump($response);
     }
 

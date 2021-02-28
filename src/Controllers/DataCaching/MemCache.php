@@ -30,10 +30,11 @@ class MemCache
         //REDIS
 
         /**
-         * //Connecting to Redis server on localhost / port 6379
+         * //Connecting to Redis server on 'localhost'='127.0.0.1' / port 6379
          * //template sample :
          * $redis = new Redis();
          * $redis->connect('127.0.0.1', 6379);
+         * $redis1 = new Predis\Client(array('host' => '127.0.0.1', 'port' => 6379));
          * echo "Connection to server sucessfully";
          * //check whether server is running or not
          * echo "Server is running: ".$redis->ping();
@@ -43,7 +44,6 @@ class MemCache
         //$this->memcache = new Redis();
         // $this->memcache->connect('127.0.0.1', 6379);
         require "predis/autoload.php";
-        $redis1 = new Predis\Client(array('host' => '127.0.0.1', 'port' => 6379));
 
         $this->memcache = new Predis\Client(array('host' => '127.0.0.1', 'port' => 6379));
 

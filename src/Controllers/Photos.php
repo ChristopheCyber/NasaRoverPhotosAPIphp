@@ -15,7 +15,7 @@ class Photos
     const ROVER = 'rover';
     const CAMERA = 'camera';
     const DAY_RANGE = 'dayRange';
-    const MAX_PICS = 'NbrPicsMax';
+    const MAX_PICS = 'max_pics';
     const DEFAULT_MAX_PICS_PER_DAY = 3;
     const DEFAULT_ROVER = 'curiosity';
     const DEFAULT_CAMERA = 'NAVCAM';
@@ -84,7 +84,7 @@ class Photos
             }
             return $result;
         } catch (\Exception $e) {
-            echo '\n* Error in Caching process during getting Photos *';
+            echo "\n* Error in Caching process in getPhotos * ";
             echo $e->getMessage();
         }
 
