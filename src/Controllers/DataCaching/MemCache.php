@@ -2,6 +2,9 @@
 
 namespace Marsapi\Controllers\DataCaching;
 
+use Predis;
+
+
 /**
  * Class MemCache
  * @package Marsapi\Cache
@@ -37,8 +40,13 @@ class MemCache
          */
 
         //Connecting to Redis server on localhost
-        $this->memcache = new Redis();
-        $this->memcache->connect('127.0.0.1', 6379);
+        //$this->memcache = new Redis();
+        // $this->memcache->connect('127.0.0.1', 6379);
+        require "predis/autoload.php";
+        $redis1 = new Predis\Client(array('host' => '127.0.0.1', 'port' => 6379));
+
+        $this->memcache = new Predis\Client(array('host' => '127.0.0.1', 'port' => 6379));
+
     }
 
     /**

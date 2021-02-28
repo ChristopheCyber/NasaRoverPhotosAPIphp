@@ -93,7 +93,7 @@ class MarsapiWrapper
             return $result;
 
         } catch (\Exception $e) {
-            echo "\n* Error in MarsapiWrapper";
+            echo "\n* Error in MarsapiWrapper *";
             echo $e->getMessage();
         }
 

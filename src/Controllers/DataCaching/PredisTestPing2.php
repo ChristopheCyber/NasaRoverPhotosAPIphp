@@ -1,4 +1,8 @@
 <?php
+namespace Marsapi\Controllers\DataCaching;
+
+use Predis;
+
 require "predis/autoload.php";
 //PredisAutoloader::register();
 
@@ -10,19 +14,17 @@ require "predis/autoload.php";
 try {
     //$redis = new Predis\Client();
     /**/
-    $redis = new Predis\Client(array(
-        "scheme" => "tcp",
-        "host" => "127.0.0.1",
-        "port" => 6379));
+    $redis = new Predis\Client(array('host' => '127.0.0.1', 'port' => 6379));
 
-    echo "Successfully connected to Redis";
+    //check whether server is running or not
+    echo "Server is running: " . $redis->ping() . "\n";
+    echo "Successfully connected to Redis\n";
 
-    $redis->set("hello_world", "Hi from test0.php!");
+    $redis->set("hello_world", "Hi from PredisTestPing2.php");
     $value = $redis->get("hello_world");
     var_dump($value);
 
-    echo ($redis->exists("Santa Claus")) ? "true" : "false";
 } catch (Exception $e) {
-    echo "Couldn't connected to Redis";
+    echo "Couldn't connect to Redis in test ping 2";
     echo $e->getMessage();
 }

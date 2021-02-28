@@ -84,7 +84,8 @@ class Photos
             }
             return $result;
         } catch (\Exception $e) {
-            echo 'Error in Caching process during getting Photos';
+            echo '\n* Error in Caching process during getting Photos *';
+            echo $e->getMessage();
         }
 
     }
