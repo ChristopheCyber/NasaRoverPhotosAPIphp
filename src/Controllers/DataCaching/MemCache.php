@@ -15,6 +15,9 @@ class MemCache
 
     /**
      * MemCache constructor.
+     * Memcache deprecated on Windows OS, Redis as alternative
+     * both not installing correctly on Windows as global system variables
+     * TODO : considering HTTP header control-cach caching as alternative
      */
     public function __construct()
     {
@@ -22,19 +25,20 @@ class MemCache
         // $this->memcache = new \Memcached();
         // $this->memcache->addServer('localhost', 11211); //could be in config
         //REDIS
-        /** //Connecting to Redis server on localhost
-         *  $redis = new Redis();
-        $redis->connect('127.0.0.1', 6379);
-        echo "Connection to server sucessfully";
-        //check whether server is running or not
-        echo "Server is running: ".$redis->ping();
+
+        /**
+         * //Connecting to Redis server on localhost / port 6379
+         * //template sample :
+         * $redis = new Redis();
+         * $redis->connect('127.0.0.1', 6379);
+         * echo "Connection to server sucessfully";
+         * //check whether server is running or not
+         * echo "Server is running: ".$redis->ping();
          */
+
         //Connecting to Redis server on localhost
         $this->memcache = new Redis();
         $this->memcache->connect('127.0.0.1', 6379);
-        echo "Connection to Redis server sucessfully";
-        //check whether server is running or not
-        echo "Server is running: " . $this->memcache->ping();
     }
 
     /**

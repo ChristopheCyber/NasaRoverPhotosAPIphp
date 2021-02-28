@@ -62,13 +62,14 @@ class Application
     {
         echo "\n* CLI started *";
         try {
-            //route parser
+            //route parser // using DI Dependencies Injection
             $class = $this->container->get('Marsapi\Controllers\Photos');
             $result = $class->showPhotos();
             echo "\n*** Application runCLI() 68: result = *" . $result . "* <br/>\n";
             var_dump($result);
         } catch (\Exception $e) {
-            echo "\n* Error with DI *";
+            echo "\n* Error with DI * ";
+            echo $e->getMessage();
         }
         echo "\n* CLI ended *";
     }
@@ -98,7 +99,8 @@ class Application
             $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
         } else {
             $whoops->pushHandler(function ($e) {
-                echo "\n* Error that should be emailed to developer";
+                echo "\n* Error that should be emailed to developer *";
+                echo $e->getMessage();
             });
         }
         $whoops->register();
