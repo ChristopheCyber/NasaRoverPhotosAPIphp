@@ -55,6 +55,7 @@ class Photos
                 self::MAX_PICS => self::DEFAULT_MAX_PICS_PER_DAY,
             ];
         }
+        echo "\n*** in Photos showPhotos 58\n";
 
         return $this->getPhotos($params);
     }
@@ -65,15 +66,18 @@ class Photos
      */
     private function getPhotos($params)
     {
+        echo "\n*** in Photos getPhotos 69\n";
+
         try {
             //$today = date('Y-m-d');
             $today = '2016-4-2';
             $result = [];
-
+            echo ' $params[self::DAY_RANGE]='.$params[self::DAY_RANGE];
             for ($i = $params[self::DAY_RANGE]; $i >= 0; $i--) {
                 $date = date('Y-m-d', strtotime("-{$i} days", strtotime($today)));
                 //key setting
                 $key = $params[self::ROVER] . $params[self::CAMERA] . $params[self::MAX_PICS] . $date;
+                echo "\n i=".$i.' => date='.$date.' => key='.$key."\n";
                 //cache retrieving
                 if ($this->cache->getCache($key)) {
                     $result[$date] = $this->cache->getCache($key);
@@ -84,7 +88,7 @@ class Photos
             }
             return $result;
         } catch (\Exception $e) {
-            echo "\n* Error in Caching process in getPhotos * ";
+            echo "\n* Error in Caching process in Photos getPhotos * ";
             echo $e->getMessage();
         }
 

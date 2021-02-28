@@ -45,12 +45,11 @@ class MarsapiWrapper
                 'api_url' => 'https://api.nasa.gov/mars-photos/api/v1/',
             ),
         );
-        echo "config['nasa_api']['api_key']=".$config['nasa_api']['api_key'] . "* \n";
-        echo "\n*** MarsapiWrapper getPhotos() 38: print_r(config) = \n++++++\n";
+        echo "\nMarsApiWrapper config['nasa_api']['api_key']=".$config['nasa_api']['api_key'] . "* \n";
+        //echo "\n*** MarsapiWrapper getPhotos() 38: print_r(config) = \n++++++\n";
         // . print_r($config) . "* \n";
-        print_r($config);
         echo "\n++++++\n";
-        echo "\n*** var_dump(config) = \n******\n"; 
+        echo "\n***MarsApiWrapper  var_dump(config) = \n******\n"; 
         var_dump($config);
         echo "\n******\n";
 
