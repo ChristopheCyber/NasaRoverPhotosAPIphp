@@ -28,9 +28,10 @@ class MemCache
 
         /**
          * //Connecting to Redis server on 'localhost'='127.0.0.1' / port 6379
-         * //template sample :
-         * $redis = new Redis();
+         * // general template sample :
+         * $redis = new Predis\Client();
          * $redis->connect('127.0.0.1', 6379);
+         * // 
          * $redis1 = new Predis\Client(array('host' => '127.0.0.1', 'port' => 6379));
          * echo "Connection to server sucessfully";
          * //check whether server is running or not
@@ -39,7 +40,7 @@ class MemCache
 
         //Connecting to Predis/Redis server on localhost
         require "predis/autoload.php";
-        //'host' & 'port' could be read from config
+        // 'host' & 'port' could be read from config
         $this->memcache = new Predis\Client(array('host' => '127.0.0.1', 'port' => 6379));
 
     }
@@ -50,7 +51,7 @@ class MemCache
      */
     public function setCache($key, $var)
     {
-        echo "\n*** in MemCache setCache 57\n";
+        echo "\n*** in MemCache setCache \n";
         /*
         echo "\n*** in MemCache setCache 59 var_dump(key) = \n******\n";
         var_dump($key);
@@ -76,13 +77,13 @@ class MemCache
      */
     public function getCache($key)
     {
-        echo "\n*** in MemCache getCache 78 var_dump(key) = \n******\n";
+        echo "\n*** in MemCache getCache key = \n******\n";
         var_dump($key);
         echo "\n******\n";
         $getResp = $this->memcache->get($key);
-        echo "\n*** in MemCache getCache 82 var_dump( getResp = memcache->get(key) ) = \n******\n";
-        var_dump($getResp);
-        echo "\n******\n";
+        // echo "\n*** in MemCache getCache getResp = memcache->get(key) = \n******\n";
+        // var_dump($getResp);
+        // echo "\n******\n";
         /*
         $getRespJson = json_decode($getResp);
         echo "\n*** in MemCache getCache 82 var_dump( getRespJson = json_decode(getResp) ) = \n******\n";

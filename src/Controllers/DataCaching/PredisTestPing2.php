@@ -15,9 +15,10 @@ try {
     //$redis = new Predis\Client();
     /**/
     $redis = new Predis\Client(array('host' => '127.0.0.1', 'port' => 6379));
-
     //check whether server is running or not
     echo "Server is running: " . $redis->ping() . "\n";
+    // Same as : ping in Predis console (cmd: $ redis-cli) => 
+    // sould answer PONG in Predis monitor (cmd: $ redis-cli monitor)
     echo "Successfully connected to Redis\n";
 
     $redis->set("hello_world", "Hi from PredisTestPing2.php");
@@ -25,6 +26,6 @@ try {
     var_dump($value);
 
 } catch (Exception $e) {
-    echo "Couldn't connect to Redis in test ping 2";
+    echo "Couldn't connect to Redis in PredisTestPing2.php";
     echo $e->getMessage();
 }

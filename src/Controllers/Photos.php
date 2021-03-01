@@ -22,7 +22,7 @@ class Photos
     const DEFAULT_DATE = '2016-5-2'; //='2016-4-2' Y-M-D
     //
     const DAY_RANGE = 'dayRange';
-    const DEFAULT_DAY_RANGE = 3; //=10;
+    const DEFAULT_DAY_RANGE = 10; //=10;
     //
     const MAX_PICS = 'max_pics';
     const DEFAULT_MAX_PICS_PER_DAY = 3;
@@ -52,7 +52,7 @@ class Photos
      */
     public function showPhotos($params = [])
     {
-        
+
         if (empty($params)) {
             $params = [
                 self::ROVER => self::DEFAULT_ROVER,
@@ -78,19 +78,19 @@ class Photos
         try {
             // $today = '2016-4-2' => date('Y-m-d')
             $today = $params[self::DATE];
-            echo "\n!! => today0=".$today. "* \n";
+            echo "\n!! => today0=" . $today . "* \n";
             $config1 = require __DIR__ . '/../config.php';
             echo "\nPhotos showPhotos config1['startDate']=" . $config1['startDate'] . "* \n";
             if ($config1['startDate']) {
-                echo "\n!!date present in config :".$config1['startDate']. "* \n";
+                echo "\n!!date present in config :" . $config1['startDate'] . "* \n";
                 $today = $config1['startDate'];
-                echo "\n!! => today1=".$today. "* \n";
+                echo "\n!! => today1=" . $today . "* \n";
             }
-    
-            // echo "\n ///////////////////////// Photos getPhotos => today= *".$today."*\n";
+
+            echo "\n*** Photos getPhotos => today= *".$today."*\n";
+            echo '\n*** DAY_RANGE = *' . $params[self::DAY_RANGE] . "*\n";
             $result = [];
-            echo ' $params[self::DAY_RANGE]=' . $params[self::DAY_RANGE];
-            for ($i = $params[self::DAY_RANGE]; $i >= 0; $i--) {
+            for ($i = $params[self::DAY_RANGE] - 1; $i >= 0; $i--) {
                 $date = date('Y-m-d', strtotime("-{$i} days", strtotime($today)));
                 //key setting
                 $key = $params[self::ROVER] . $params[self::CAMERA] . $params[self::MAX_PICS] . $date;
