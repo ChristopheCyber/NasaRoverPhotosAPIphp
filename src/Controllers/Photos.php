@@ -14,15 +14,21 @@ class Photos
 
     const ROVER = 'rover';
     const DEFAULT_ROVER = 'curiosity';
-    //
+    // const DEFAULT_ROVER = 'opportunity';
+    // const DEFAULT_ROVER = 'spirit';
+    
     const CAMERA = 'camera';
-    const DEFAULT_CAMERA = 'NAVCAM';
+    const DEFAULT_CAMERA = 'NAVCAM'; // Navigation Camera (part of curiosity, opportunity, spirit)
+    // const DEFAULT_CAMERA = 'FHAZ'; // Front Hazard Avoidance Camera (part of curiosity, opportunity, spirit)
+    // const DEFAULT_CAMERA = 'MAST'; // Mast Camera (part of curiosity)
+    // const DEFAULT_CAMERA = 'PANCAM'; // Panoramic Camera (part of opportunity, spirit)
+    // for more options: see Rover Cameras table on https://api.nasa.gov/ => Browse APIs => Mars Rover Photos
     //
     const DATE = 'dateChosen';
-    const DEFAULT_DATE = '2016-5-2'; //='2016-4-2' Y-M-D
+    const DEFAULT_DATE = '2016-4-2';
     //
     const DAY_RANGE = 'dayRange';
-    const DEFAULT_DAY_RANGE = 10; //=10;
+    const DEFAULT_DAY_RANGE = 10;
     //
     const MAX_PICS = 'max_pics';
     const DEFAULT_MAX_PICS_PER_DAY = 3;
@@ -87,7 +93,7 @@ class Photos
                 echo "\n!! => today1=" . $today . "* \n";
             }
 
-            echo "\n*** Photos getPhotos => today= *".$today."*\n";
+            echo "\n*** Photos getPhotos => today= *" . $today . "*\n";
             echo '\n*** DAY_RANGE = *' . $params[self::DAY_RANGE] . "*\n";
             $result = [];
             for ($i = $params[self::DAY_RANGE] - 1; $i >= 0; $i--) {
