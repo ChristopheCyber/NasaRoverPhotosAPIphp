@@ -17,15 +17,13 @@ class MemCache
 
     /**
      * MemCache constructor.
-     * Memcache deprecated on Windows OS, Redis as alternative
-     * both not installing correctly on Windows as global system variables
-     * TODO : considering HTTP header control-cach caching as alternative
+     * Predis/Redis cache server as alternative to Memcache deprecated on Windows OS
      */
     public function __construct()
     {
         // Memcached() is deprecated on Windows => Redis is good alternative
         // $this->memcache = new \Memcached();
-        // $this->memcache->addServer('localhost', 11211); //could be in config
+        // $this->memcache->addServer('localhost', 11211); 
         //REDIS
 
         /**
@@ -39,11 +37,9 @@ class MemCache
          * echo "Server is running: ".$redis->ping();
          */
 
-        //Connecting to Redis server on localhost
-        //$this->memcache = new Redis();
-        // $this->memcache->connect('127.0.0.1', 6379);
+        //Connecting to Predis/Redis server on localhost
         require "predis/autoload.php";
-
+        //'host' & 'port' could be read from config
         $this->memcache = new Predis\Client(array('host' => '127.0.0.1', 'port' => 6379));
 
     }
@@ -51,37 +47,26 @@ class MemCache
     /**
      * @param $key
      * @param $var
-     * @param int $expire
      */
-    public function setCache($key, $var, $expire = 10)
+    public function setCache($key, $var)
     {
-        echo "\n*** in MemCache setCache 58\n";
+        echo "\n*** in MemCache setCache 57\n";
         /*
-        echo "\n*** in MemCache setCache 60 var_dump(key) = \n******\n";
+        echo "\n*** in MemCache setCache 59 var_dump(key) = \n******\n";
         var_dump($key);
         echo "\n******\n";
-        echo "\n*** in MemCache setCache 63 var_dump(var) = \n******\n";
+        echo "\n*** in MemCache setCache 62 var_dump(var) = \n******\n";
         var_dump($var);
         echo "\n******\n";
-        echo "\n*** in MemCache setCache 66 var_dump(expire) = \n******\n";
-        var_dump($expire);
-        echo "\n******\n";
-        echo "\n*** in MemCache setCache 69 var_dump( json_encode(var) ) = \n******\n";
+        echo "\n*** in MemCache setCache 65 var_dump( json_encode(var) ) = \n******\n";
         $stringVar = json_encode($var);
         var_dump($stringVar);
         echo "\n****** json_decode() => \n";
         var_dump(json_decode($stringVar, true));
         echo "\n******\n";
          */
-
-        // $this->memcache->set($key, $var);
         $encode_var = json_encode($var);
         $this->memcache->set($key, $encode_var);
-
-        $varGet = $this->memcache->get($key);
-        $varDecod = json_decode($varGet, true);
-        echo "\n varDecod =\n";
-        var_dump($varDecod);
 
     }
 
@@ -98,12 +83,12 @@ class MemCache
         echo "\n*** in MemCache getCache 82 var_dump( getResp = memcache->get(key) ) = \n******\n";
         var_dump($getResp);
         echo "\n******\n";
-        /* 
+        /*
         $getRespJson = json_decode($getResp);
         echo "\n*** in MemCache getCache 82 var_dump( getRespJson = json_decode(getResp) ) = \n******\n";
         var_dump($getRespJson);
-        echo "\n******\n"; 
-        */
+        echo "\n******\n";
+         */
         return json_decode($this->memcache->get($key));
     }
 

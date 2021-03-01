@@ -32,6 +32,7 @@ class MarsapiWrapper
      */
     public function getPhotos($params, $date)
     {
+        //TODO
         //reading config file
         // $config = require_once __DIR__ . '/../config.php';
         // $config = require __DIR__ . '/../config.php';

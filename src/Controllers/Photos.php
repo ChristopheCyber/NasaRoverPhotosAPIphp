@@ -19,8 +19,8 @@ class Photos
     const DEFAULT_MAX_PICS_PER_DAY = 3;
     const DEFAULT_ROVER = 'curiosity';
     const DEFAULT_CAMERA = 'NAVCAM';
-    const DEFAULT_DAY_RANGE = 2;
-    // const DEFAULT_DAY_RANGE = 10;
+    // const DEFAULT_DAY_RANGE = 2;
+    const DEFAULT_DAY_RANGE = 10;
     /**
      * @var MarsapiWrapper
      */

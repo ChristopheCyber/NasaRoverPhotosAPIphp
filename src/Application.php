@@ -48,8 +48,7 @@ class Application
     public function run()
     {
         //echo php_sapi_name() <=> PHP_SAPI
-        echo "\n*** Application run() 51: php_sapi_name = *" . php_sapi_name() . "* <br/>\n";
-        //echo "\n phpinfo() =  ".phpinfo()." <br/>\n";
+        echo "\n*** Application run(): php_sapi_name = *" . php_sapi_name() . "* \n";
         //
         if (PHP_SAPI === 'cli') {
             $this->runCLI();
@@ -60,18 +59,21 @@ class Application
     //CLI command handler
     public function runCLI()
     {
-        echo "\n* CLI started *";
+        echo "\n* CLI started *\n";
         try {
             //route parser // using DI Dependencies Injection
             $class = $this->container->get('Marsapi\Controllers\Photos');
             $result = $class->showPhotos();
-            echo "\n*** Application runCLI() 68: result = \n";
+            echo "\n*** Application runCLI() => \n"
+                . " ******************************************************************************** \n"
+                . " ************************* < MARS ROVER PHOTOS table: > ************************* \n"
+                . " ******************************************************************************** \n";
             var_dump($result);
         } catch (\Exception $e) {
             echo "\n* Error with DI * ";
             echo $e->getMessage();
         }
-        echo "\n* CLI ended *";
+        echo "\n* CLI ended *\n";
     }
 
     public function runHTTP()
@@ -81,7 +83,7 @@ class Application
         //Boot Router
         $routes = require __DIR__ . '/routes.php';
         $response = $this->bootRouter($routes);
-        echo "\n*** Application runHTTP() 84: response = *" . $response . "* \n";
+        echo "\n*** Application runHTTP() : response = *" . $response . "* \n";
         var_dump($response);
     }
 
