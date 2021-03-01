@@ -4,7 +4,6 @@ namespace Marsapi\Controllers\DataCaching;
 
 use Predis;
 
-
 /**
  * Class MemCache
  * @package Marsapi\Cache
@@ -54,13 +53,14 @@ class MemCache
      * @param $var
      * @param int $expire
      */
-    public function setCache($key, $var, $expire = 10){
+    public function setCache($key, $var, $expire = 10)
+    {
         echo "\n*** in MemCache setCache 58\n";
-        echo "\n*** key=".$key.";  var=".$var.";  expire=".$expire."\n";
-        echo "\n*** in MemCache setCache 60 var_dump(key) = \n******\n"; 
+        /*
+        echo "\n*** in MemCache setCache 60 var_dump(key) = \n******\n";
         var_dump($key);
         echo "\n******\n";
-        echo "\n*** in MemCache setCache 63 var_dump(var) = \n******\n"; 
+        echo "\n*** in MemCache setCache 63 var_dump(var) = \n******\n";
         var_dump($var);
         echo "\n******\n";
         echo "\n*** in MemCache setCache 66 var_dump(expire) = \n******\n";
@@ -72,19 +72,14 @@ class MemCache
         echo "\n****** json_decode() => \n";
         var_dump(json_decode($stringVar, true));
         echo "\n******\n";
-        // echo "\nvar[2016-03-31][0]=".$var["2016-03-31"][0];
-        // echo "\nstrval( var[2016-03-31][0] )=".strval($var["2016-03-31"][0]);
-        // $key3 = "countries";
-        // $this->memcache->sadd($key3, [$var["2016-03-31"][0], $var["2016-03-31"][1], $var["2016-03-31"][2]]);
-        // $this->memcache->sadd($key3, ['france', 'germany', 'czechia']);
+         */
 
-        // $var1 = $var["2016-03-31"][0];
-        // $this->memcache->set($key, $var1);
-        $encode_var =json_encode($var);
+        // $this->memcache->set($key, $var);
+        $encode_var = json_encode($var);
         $this->memcache->set($key, $encode_var);
 
         $varGet = $this->memcache->get($key);
-        $varDecod = json_decode($varGet,true);
+        $varDecod = json_decode($varGet, true);
         echo "\n varDecod =\n";
         var_dump($varDecod);
 
@@ -94,19 +89,21 @@ class MemCache
      * @param $key
      * @return mixed
      */
-    public function getCache($key) {
-        echo "\n*** in MemCache getCache 77\n";
-        echo "\n*** in MemCache getCache 78 var_dump(key) = \n******\n"; 
+    public function getCache($key)
+    {
+        echo "\n*** in MemCache getCache 78 var_dump(key) = \n******\n";
         var_dump($key);
         echo "\n******\n";
         $getResp = $this->memcache->get($key);
-        echo "\n*** in MemCache getCache 82 var_dump( getResp = memcache->get(key) ) = \n******\n"; 
+        echo "\n*** in MemCache getCache 82 var_dump( getResp = memcache->get(key) ) = \n******\n";
         var_dump($getResp);
         echo "\n******\n";
+        /* 
         $getRespJson = json_decode($getResp);
-        echo "\n*** in MemCache getCache 82 var_dump( getRespJson = json_decode(getResp) ) = \n******\n"; 
+        echo "\n*** in MemCache getCache 82 var_dump( getRespJson = json_decode(getResp) ) = \n******\n";
         var_dump($getRespJson);
-        echo "\n******\n";
+        echo "\n******\n"; 
+        */
         return json_decode($this->memcache->get($key));
     }
 

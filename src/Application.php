@@ -65,7 +65,7 @@ class Application
             //route parser // using DI Dependencies Injection
             $class = $this->container->get('Marsapi\Controllers\Photos');
             $result = $class->showPhotos();
-            echo "\n*** Application runCLI() 68: result = *" . $result . "* \n";
+            echo "\n*** Application runCLI() 68: result = \n";
             var_dump($result);
         } catch (\Exception $e) {
             echo "\n* Error with DI * ";
