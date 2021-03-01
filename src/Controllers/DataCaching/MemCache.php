@@ -72,12 +72,22 @@ class MemCache
         echo "\n****** json_decode() => \n";
         var_dump(json_decode($stringVar, true));
         echo "\n******\n";
-        echo "\nvar[2016-03-31][0]=".$var["2016-03-31"][0];
-        echo "\nstrval( var[2016-03-31][0] )=".strval($var["2016-03-31"][0]);
-        $var1 = $var["2016-03-31"][0];
-        $this->memcache->set($key, $var1);
-        // $this->memcache->set($key, strval($var["2016-03-31"][0]), $expire);
-        // $this->memcache->set($key, $var["2016-03-31"][0], $var["2016-03-31"][1], $var["2016-03-31"][2], $expire);
+        // echo "\nvar[2016-03-31][0]=".$var["2016-03-31"][0];
+        // echo "\nstrval( var[2016-03-31][0] )=".strval($var["2016-03-31"][0]);
+        // $key3 = "countries";
+        // $this->memcache->sadd($key3, [$var["2016-03-31"][0], $var["2016-03-31"][1], $var["2016-03-31"][2]]);
+        // $this->memcache->sadd($key3, ['france', 'germany', 'czechia']);
+
+        // $var1 = $var["2016-03-31"][0];
+        // $this->memcache->set($key, $var1);
+        $encode_var =json_encode($var);
+        $this->memcache->set($key, $encode_var);
+
+        $varGet = $this->memcache->get($key);
+        $varDecod = json_decode($varGet,true);
+        echo "\n varDecod =\n";
+        var_dump($varDecod);
+
     }
 
     /**
