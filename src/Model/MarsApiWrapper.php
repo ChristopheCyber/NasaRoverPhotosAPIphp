@@ -35,22 +35,27 @@ class MarsapiWrapper
         //TODO
         //reading config file
         // $config = require_once __DIR__ . '/../config.php';
-        // $config = require __DIR__ . '/../config.php';
+        $config = require __DIR__ . '/../config.php';
+        /*
         $config = array(
-            'host' => 'localhost',
-            'username' => 'admin',
-            'database' => 'db',
-            'password' => 'pwd',
-            'nasa_api' => array(
-                'api_key' => 'DEMO_KEY',
-                'api_url' => 'https://api.nasa.gov/mars-photos/api/v1/',
-            ),
+        'startDate' => '2016-6-2',
+        'nasa_api' => array(
+        'api_key' => 'DEMO_KEY',
+        'api_url' => 'https://api.nasa.gov/mars-photos/api/v1/',
+        ),
+        'host' => 'localhost',
+        'port'=> 6379,
+        'username' => 'user',
+        'database' => '',
+        'password' => '',
         );
-        echo "\nMarsApiWrapper config['nasa_api']['api_key']=".$config['nasa_api']['api_key'] . "* \n";
+         */
+        echo "\nMarsApiWrapper config['startDate']=" . $config['startDate'] . "* \n";
+        echo "\nMarsApiWrapper config['nasa_api']['api_key']=" . $config['nasa_api']['api_key'] . "* \n";
         //echo "\n*** MarsapiWrapper getPhotos() 38: print_r(config) = \n++++++\n";
         // . print_r($config) . "* \n";
         echo "\n++++++\n";
-        echo "\n***MarsApiWrapper  var_dump(config) = \n******\n"; 
+        echo "\n***MarsApiWrapper  var_dump(config) = \n******\n";
         var_dump($config);
         echo "\n******\n";
 
