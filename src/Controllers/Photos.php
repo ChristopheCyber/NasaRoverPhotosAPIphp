@@ -14,15 +14,9 @@ class Photos
 
     const ROVER = 'rover';
     const DEFAULT_ROVER = 'curiosity';
-    // const DEFAULT_ROVER = 'opportunity';
-    // const DEFAULT_ROVER = 'spirit';
     
     const CAMERA = 'camera';
     const DEFAULT_CAMERA = 'NAVCAM'; // Navigation Camera (part of curiosity, opportunity, spirit)
-    // const DEFAULT_CAMERA = 'FHAZ'; // Front Hazard Avoidance Camera (part of curiosity, opportunity, spirit)
-    // const DEFAULT_CAMERA = 'MAST'; // Mast Camera (part of curiosity)
-    // const DEFAULT_CAMERA = 'PANCAM'; // Panoramic Camera (part of opportunity, spirit)
-    // for more options: see Rover Cameras table on https://api.nasa.gov/ => Browse APIs => Mars Rover Photos
     //
     const DATE = 'dateChosen';
     const DEFAULT_DATE = '2016-4-2';

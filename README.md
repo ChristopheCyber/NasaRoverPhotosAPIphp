@@ -1,5 +1,51 @@
-NASA rover images test
-======================
+Answering to the coding challenge (described bellow at the end)
+===============================================================
+The CLI entry point :
+$ php publi/index.php
+(from project's root folder)
+
+Development done in Vanilla PHP following OOP programmation, without framework.
+Except elementary using of Dependencies Injection PHP-DI
+
+Design dtructure done following partly MVC model 
+
+Caching memory done on Redis (Predis) server.
+
+CLI call process implemented
+
+Can change photos' start date in public/config.php
+
+Default date set at '2016-4-2'
+Default days range set at 10 days. ( in src/Photos.php )
+
+Unfinished project.
+TODO : implement choices of rovers and cams
+TODO : HTTP call process under development
+TODO : improve PHP doc
+TODO : tests ( Postman, PHPUnit )
+
+Instructions :
+
+1: clone project from GitHub:
+git clone https://github.com/ChristopheCyber/NasaRoverPhotosAPIphp.git
+
+2: install and run PHP composer 
+( windows : from installer on www.getcomposer.org)
+( MacOS : $ brew install composer )
+run composer for setting json dependencies
+$ composer install
+$ composer update
+
+3: install Predis/Redis server (for memory cache)
+$ composer require predis/predis
+$ git clone git://github.com/nrk/predis.git
+
+4: CLI tests ( can change photos' date in public/config.php or date range hard coded in src/Photos.php)
+$ php public/index.php
+
+***********************************************************************************************
+NASA rover images test / Coding Challenge Instructions
+======================================================
 This test is about creating your own API by collecting data from NASA's APIs for the Mars rovers.
 
 **_Please read through these instructions carefully before you begin._**
@@ -20,7 +66,7 @@ NASA provides a simple HTTP API that allows for querying of rover images. This i
 
 	https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2016-4-2&camera=NAVCAM&api_key=DEMO_KEY
 
-NASA's documentation can be found [here](https://api.nasa.gov/api.html#MarsPhotos).
+NASA's documentation can be found [here](https://api.nasa.gov/).(Browse APIs / Mars Rover Photos)
 
 You don't need to specifically add support for the other rovers nor the other kinds of cameras, but your solution should be easily extended to support multiple rovers, cameras, and other endpoints.
 
