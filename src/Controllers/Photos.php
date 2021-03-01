@@ -13,14 +13,19 @@ class Photos
 {
 
     const ROVER = 'rover';
+    const DEFAULT_ROVER = 'curiosity';
+    //
     const CAMERA = 'camera';
+    const DEFAULT_CAMERA = 'NAVCAM';
+    //
+    const DATE = 'dateChosen';
+    const DEFAULT_DATE = '2016-4-2'; //Y-M-D
+    //
     const DAY_RANGE = 'dayRange';
+    const DEFAULT_DAY_RANGE = 10; //=10;
+    //
     const MAX_PICS = 'max_pics';
     const DEFAULT_MAX_PICS_PER_DAY = 3;
-    const DEFAULT_ROVER = 'curiosity';
-    const DEFAULT_CAMERA = 'NAVCAM';
-    // const DEFAULT_DAY_RANGE = 2;
-    const DEFAULT_DAY_RANGE = 10;
     /**
      * @var MarsapiWrapper
      */
@@ -53,6 +58,7 @@ class Photos
                 self::CAMERA => self::DEFAULT_CAMERA,
                 self::DAY_RANGE => self::DEFAULT_DAY_RANGE,
                 self::MAX_PICS => self::DEFAULT_MAX_PICS_PER_DAY,
+                self::DATE => self::DEFAULT_DATE,
             ];
         }
         echo "\n*** in Photos showPhotos 58\n";
@@ -69,15 +75,16 @@ class Photos
         echo "\n*** in Photos getPhotos 69\n";
 
         try {
-            //$today = date('Y-m-d');
-            $today = '2016-4-2';
+            // $today = '2016-4-2' => date('Y-m-d')
+            $today = $params[self::DATE];
+            // echo "\n ///////////////////////// Photos getPhotos => today= *".$today."*\n";
             $result = [];
-            echo ' $params[self::DAY_RANGE]='.$params[self::DAY_RANGE];
+            echo ' $params[self::DAY_RANGE]=' . $params[self::DAY_RANGE];
             for ($i = $params[self::DAY_RANGE]; $i >= 0; $i--) {
                 $date = date('Y-m-d', strtotime("-{$i} days", strtotime($today)));
                 //key setting
                 $key = $params[self::ROVER] . $params[self::CAMERA] . $params[self::MAX_PICS] . $date;
-                echo "\n i=".$i.' => date='.$date.' => key='.$key."\n";
+                echo "\n i=" . $i . ' => date=' . $date . ' => key=' . $key . "\n";
                 //cache retrieving
                 if ($this->cache->getCache($key)) {
                     $result[$date] = $this->cache->getCache($key);
