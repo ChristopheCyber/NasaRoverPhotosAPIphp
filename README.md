@@ -5,9 +5,10 @@ $ php publi/index.php
 (from project's root folder)
 
 Development done in Vanilla PHP following OOP programmation, without framework.
-Except elementary using of Dependencies Injection PHP-DI
 
-Design dtructure done following partly MVC model 
+Except elementary using of Dependencies Injection PHP-DI.
+
+Design structure done following partly MVC model.
 
 Caching memory done on Redis (Predis) server.
 
@@ -19,9 +20,13 @@ Default date set at '2016-4-2'
 Default days range set at 10 days. ( in src/Photos.php )
 
 Unfinished project.
+
 TODO : implement choices of rovers and cams
+
 TODO : HTTP call process under development
+
 TODO : improve PHP doc
+
 TODO : tests ( Postman, PHPUnit )
 
 Instructions :
